@@ -25,3 +25,8 @@ The script parses dmesg output, looking for the `failed with error` and `rename`
 A `rename` message takes precedence over a `failed with error` for the same PCI address, as sometimes the interface still binds after logging a timeout. This also permits the `fix_25G_port` script to be rerun, without producing an error message.
 
 Tests indicate that trying to bind a port to the driver, when it is already bound, produces an error message, but does no harm to the running system.
+
+# Install
+`cp sbin/fix_25G_ports /usr/local/sbin/`
+`cp systemd/fix_25G_ports /etc/systemd/system/fix_25G_ports.service`
+`systemctl enable fix_25G_ports.service`
