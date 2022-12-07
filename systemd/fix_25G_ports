@@ -1,0 +1,12 @@
+[Unit]
+Description=Fix Failure of ports on 25G cards to bind to bnxt_en driver
+After=network.target syslog.target
+
+[Service]
+User=root
+ExecStart=/usr/local/sbin/fix_25G_ports
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

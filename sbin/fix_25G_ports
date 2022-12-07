@@ -1,0 +1,10 @@
+#!/bin/bash
+# Looking for these two lines, for failure and success respectively
+# [    2.498230] bnxt_en: probe of 0000:af:00.1 failed with error -1
+# [    2.530156] bnxt_en 0000:af:00.0 enp175s0f0: renamed from eth0
+
+for i in $(dmesg | grep bnxt_en | sed 's/^\[.*\] //' | awk '/renamed from/ { failed[$2] = 0 }; /failed with error/ { if(!($4 in failed)) { failed[$4] = 1 }  } ; END { for (key in failed) { if(failed[key] == 1) { print key } } }')
+do
+  echo "attaching $i to bnxt_en"
+  echo $i > /sys/bus/pci/drivers/bnxt_en/bind
+done
