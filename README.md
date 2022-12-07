@@ -27,6 +27,8 @@ A `rename` message takes precedence over a `failed with error` for the same PCI 
 Tests indicate that trying to bind a port to the driver, when it is already bound, produces an error message, but does no harm to the running system.
 
 # Install
-`cp sbin/fix_25G_ports /usr/local/sbin/`
-`cp systemd/fix_25G_ports /etc/systemd/system/fix_25G_ports.service`
-`systemctl enable fix_25G_ports.service`
+```
+cp sbin/fix_25G_ports /usr/local/sbin/
+cp systemd/fix_25G_ports /etc/systemd/system/fix_25G_ports.service
+systemctl enable fix_25G_ports.service
+```
